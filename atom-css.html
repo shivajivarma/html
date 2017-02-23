@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+     .parent {height: 100%;}
+
+
+.parent > div { 
+  position: absolute; 
+  top: 12%; 
+  left: 50%; 
+  margin-left: -103px;
+  width: 200px; 
+  height: 200px; 
+  border-radius: 50%; 
+  border: 7px solid #7795f8;
+  transform-style: preserve-3d; 
+  transform: rotateX(80deg) rotateY(20deg);
+}
+
+.parent > div:first-of-type:after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  background: #EF6C00;
+  border-radius: 50%;
+  transform: rotateX(-80deg) rotateY(0);
+  box-shadow: 0 0 25px #EF6C00;
+  animation: nucleus_ 2s infinite linear;
+  left: 56%;
+  top: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.parent > div:nth-of-type(2) {
+  transform: rotateX(-80deg) rotateY(20deg);
+}
+
+.parent > div:nth-of-type(3) {
+  transform: rotateX(-70deg) rotateY(60deg);
+}
+
+.parent > div:nth-of-type(4) {
+  transform: rotateX(70deg) rotateY(60deg);
+}
+
+.parent > div > div {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: trail_ 2s infinite linear;
+}
+
+.parent > div > .particle:after {
+  content: ""; 
+  position: absolute; 
+  top: -5px; 
+  box-shadow: 0 0 50px #b93d6a;
+  left: 50%; 
+  margin-left: -5px; 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%;
+  background-color: #b93d6a;
+  animation: particle_ 2s infinite linear;
+}
+
+.parent > div:nth-of-type(2) > div,
+.parent > div:nth-of-type(2) > div:after {
+  animation-delay: -.5s;
+}
+
+.parent > div:nth-of-type(3)  > div,
+.parent > div:nth-of-type(3)  > div:after {
+  animation-delay: -1s;
+}
+
+.parent > div:nth-of-type(4) > div,
+.parent > div:nth-of-type(4) > div:after {
+  animation-delay: -1.5s;
+}
+
+
+
+@keyframes trail_ { 
+    from {
+        transform: rotateZ(0deg);
+    } to {
+        transform: rotateZ(360deg);
+    }
+}
+
+
+@keyframes particle_ { 
+    from {
+        transform: rotateX(90deg) rotateY(0deg); 
+    } to { 
+        transform: rotateX(90deg) rotateY(-360deg); 
+    } 
+}
+
+@keyframes nucleus_ { 
+    0% {
+        box-shadow: 0 0 0 transparent;
+    } 50% { 
+        box-shadow: 0 0 25px #EF6C00;
+    } 100% { 
+        box-shadow: 0 0 0 transparent;
+    }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="parent">
+       <div><div class="particle"></div></div>
+       <div><div class="particle"></div></div>
+       <div><div class="particle"></div></div>
+       <div><div class="particle"></div></div>
+  </div>
+ 
+  
+  
+  
+</body>
+</html>
